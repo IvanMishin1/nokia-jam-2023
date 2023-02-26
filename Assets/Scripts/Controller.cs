@@ -47,9 +47,11 @@ public class Controller : MonoBehaviour
 
     public void Start()
     {
-        NewLevel();
+        Application.targetFrameRate = 15;
 
-        Time.timeScale = timeScaleInitial;
+        NewLevel();
+        //gameOver = true;
+        //Time.timeScale = 0;
     }
 
     public void NewLevel()
@@ -88,7 +90,14 @@ public class Controller : MonoBehaviour
     {
         if (gameOver)
         {
-            if (Input.GetKeyDown("space")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (Input.GetKeyDown("space"))
+            {
+                //Time.timeScale = timeScaleInitial;
+                //level = 0;
+                //NewLevel();
+                //gameOver = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
 
         else

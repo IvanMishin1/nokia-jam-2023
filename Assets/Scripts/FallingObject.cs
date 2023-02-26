@@ -19,7 +19,7 @@ public class FallingObject : MonoBehaviour
     private void Update()
     {
         positionChange += speed * Time.deltaTime;
-        if (positionChange > 1)
+        while (positionChange > 1)
         {
             transform.Translate(0, -1, 0);
             positionChange -= 1;

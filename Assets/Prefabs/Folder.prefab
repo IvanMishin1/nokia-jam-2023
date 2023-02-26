@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  minSpeed: 6
-  maxSpeed: 12
+  minSpeed: 3
+  maxSpeed: 6
   positionChange: 0
   progressAmount: 1
   alertAmount: 1
