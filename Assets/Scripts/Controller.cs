@@ -33,6 +33,7 @@ public class Controller : MonoBehaviour
     public float timeScaleMax;
     public float timeScaleStep;
     public float timeScaleInitial;
+    public bool timeScaleLocked;
 
     public Image plusImage;
     public Sprite plusPressed;
@@ -62,6 +63,7 @@ public class Controller : MonoBehaviour
         progressGoal += progressGoalIncrease;
 
         spawner.LevelUp();
+        virusHandler.RevertAll();
         foreach(Transform transform in fallingStuffContainer)
         {
             Destroy(transform.gameObject);  //Destroy all the objects when a new level starts
@@ -95,14 +97,14 @@ public class Controller : MonoBehaviour
             UpdateAlert(alertPerSecond * Time.unscaledDeltaTime);
 
             //The player can change the timescale. It is clamped within a minimum and maximum.
-            if (Input.GetKeyDown("up") && Time.timeScale < timeScaleMax)
+            if (Input.GetKeyDown("up") && Time.timeScale < timeScaleMax && !timeScaleLocked)
             {
                 Time.timeScale += timeScaleStep;
                 plusImage.sprite = plusPressed;
             }
             if (Input.GetKeyUp("up")) plusImage.sprite = plusUnpressed;
 
-            if (Input.GetKeyDown("down") && Time.timeScale > timeScaleMin)
+            if (Input.GetKeyDown("down") && Time.timeScale > timeScaleMin && !timeScaleLocked)
             {
                 Time.timeScale -= timeScaleStep;
                 minusImage.sprite = minusPressed;
@@ -131,8 +133,9 @@ public class Controller : MonoBehaviour
     public void UpdateFirewall(float amount)   //Called by other objects when alert should be updated.
     {
         firewall += amount;
-        UpdateBar(firewallBar, firewall / firewallMax, false);
         if (firewall <= 0) Virus();
+        UpdateBar(firewallBar, firewall / firewallMax, false);
+
     }
 
     public void UpdateBar(Image bar, float fillAmount, bool floor)
@@ -144,7 +147,12 @@ public class Controller : MonoBehaviour
 
     void Virus()
     {
+        firewall += firewallMax;
         virusHandler.Infect();
+
+        text.enabled = true;
+        text.text = "VIRUS";
+        Invoke("DisableText", 2f);
     }
     public void GameOver()
     {

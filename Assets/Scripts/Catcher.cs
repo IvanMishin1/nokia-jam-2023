@@ -7,52 +7,42 @@ public class Catcher : MonoBehaviour
 
     public float speed;
 
-    public enum Mode
-    {
-        normal,
-        delayed,
-        reversed
+    public bool delayed;
+    public float delay;
 
+    public bool reversed;
 
-    }
+    public bool slowed;
+    public float slowMultiplier;
 
-    public Mode mode;
-
-    // Update is called once per frame
     void Update()
     {
-        switch (mode)
+        float direction = 0;
+        if (Input.GetKey("a")) direction =-1;
+        if (Input.GetKey("d")) direction = 1;
+
+        if (reversed) direction *= -1;
+
+
+        if (direction != 0)
         {
-            case Mode.normal:
-                Normal();
-                break;
-            case Mode.reversed:
-                Reversed();
-                break;
+            if (delayed) StartCoroutine(DelayedMove(direction));
+
+            else Move(direction);
         }
     }
 
-    void Normal()
+    IEnumerator DelayedMove(float direction)
     {
-        if (Input.GetKey("a")) MoveLeft();
-        if (Input.GetKey("d")) MoveRight();
-    }
-
-    void Reversed()
-    {
-        if (Input.GetKey("d")) MoveLeft();
-        if (Input.GetKey("a")) MoveRight();
+        yield return new WaitForSeconds(delay);
+        Move(direction);
 
     }
-    void MoveLeft()
+
+    void Move(float direction)
     {
         float movement = speed * Time.deltaTime;
-        if (transform.position.x > -24) transform.Translate(-movement, 0f, 0f);
+        if (slowed) movement *= slowMultiplier;
+        if (transform.position.x * direction < 24) transform.Translate(movement * direction, 0f, 0f);
     }
-    void MoveRight()
-    {
-        float movement = speed * Time.deltaTime;
-        if (transform.position.x < 24) transform.Translate(movement, 0f, 0f);
-    }
-
 }

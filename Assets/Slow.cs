@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DelayedMovement : VirusEffect
+public class Slow : VirusEffect
 {
     public Catcher catcher;
     public override void Infect()
     {
-        catcher.delayed = true;
+        catcher.slowed = true;
     }
 
     public override void Revert()
     {
-        catcher.delayed = false;
+        catcher.slowed = false;
     }
 }

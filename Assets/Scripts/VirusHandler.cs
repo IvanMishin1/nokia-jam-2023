@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class VirusHandler : MonoBehaviour
 {
-    public List<VirusEffect> virusEffects;
+    public List<VirusEffect> availableEffects;
+    public List<VirusEffect> activeEffects;
     // Start is called before the first frame update
     void Start()
     {
-        virusEffects.AddRange(transform.Find("VirusEffects").GetComponents<VirusEffect>());
+        availableEffects.AddRange(transform.Find("VirusEffects").GetComponents<VirusEffect>());
     }
 
     public void Infect()
     {
-        int index = Random.Range(0, virusEffects.Count);
-        virusEffects[index].Infect();
+        int index = Random.Range(0, availableEffects.Count);
+        availableEffects[index].Infect();
+        activeEffects.Add(availableEffects[index]);
+        availableEffects.RemoveAt(index);
     }
 
     // Update is called once per frame
-    void Update()
+    public void RevertAll()
     {
-        
+        while(activeEffects.Count > 0)
+        {
+            availableEffects.Add(activeEffects[0]);
+            activeEffects[0].Revert();
+            activeEffects.RemoveAt(0);
+        }
     }
 }

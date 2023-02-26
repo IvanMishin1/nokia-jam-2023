@@ -7,11 +7,11 @@ public class ReverseMovement : VirusEffect
     public Catcher catcher;
     public override void Infect()
     {
-        catcher.mode = Catcher.Mode.reversed;
+        catcher.reversed = true;
     }
 
     public override void Revert()
     {
-        catcher.mode = Catcher.Mode.normal;
+        catcher.reversed = false;
     }
 }
