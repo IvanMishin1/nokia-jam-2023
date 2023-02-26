@@ -152,7 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57666263c6f776e49870961cfc5ae03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressGoal: 10
+  spawner: {fileID: 2026393917}
+  fallingStuffContainer: {fileID: 1039420987}
+  catcher: {fileID: 901108074}
+  virusHandler: {fileID: 1088077377}
+  progressGoal: 2
+  progressGoalIncrease: 4
   progressBar: {fileID: 545622543}
   alertGoal: 10
   alertPerSecond: 0.1
@@ -336,7 +341,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1202559863
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &161987441
@@ -728,8 +733,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 34}
-  m_SizeDelta: {x: 48.75, y: 30.5301}
+  m_AnchoredPosition: {x: 0, y: 38}
+  m_SizeDelta: {x: 48.75, y: 39.5425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &805774770
 MonoBehaviour:
@@ -738,7 +743,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805774768}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -764,7 +769,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 1
+  m_Text: Text
 --- !u!222 &805774771
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -881,6 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 14
+  mode: 0
 --- !u!212 &901108075
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -993,6 +999,81 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1039420986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039420987}
+  m_Layer: 0
+  m_Name: FallingStuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1039420987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039420986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.487468, y: 6.633399, z: -6.951733}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1088077376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1088077378}
+  - component: {fileID: 1088077377}
+  m_Layer: 0
+  m_Name: VirusHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1088077377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088077376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75de3387e2fa78e4cb0f5ed30d127a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusEffects: []
+--- !u!4 &1088077378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088077376}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.487468, y: 6.633399, z: -6.951733}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1762760260}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1124068209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1462,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388965061}
   m_CullTransparentMesh: 1
+--- !u!1 &1762760259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1762760260}
+  - component: {fileID: 1762760262}
+  m_Layer: 0
+  m_Name: VirusEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1762760260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762760259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1088077378}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762760262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762760259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf4dddc487348d4993c70e76876e999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catcher: {fileID: 901108074}
 --- !u!1 &2025851236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,15 +1611,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 117474403}
+  container: {fileID: 1039420987}
   fallingObjects:
   - prefab: {fileID: 3460623877523781825, guid: 1f5097e528920af40be1591d56960d29, type: 3}
-    spawnRate: 0.4
-  - prefab: {fileID: 255340307441618166, guid: bb4c4c23852eb92488f93fdef088b464, type: 3}
     spawnRate: 0.2
+    spawnRateIncrease: 0.05
+  - prefab: {fileID: 255340307441618166, guid: bb4c4c23852eb92488f93fdef088b464, type: 3}
+    spawnRate: 0
+    spawnRateIncrease: 0.05
   - prefab: {fileID: 3460623877523781825, guid: a7949544872c9b84fafe6ca33f3d4b02, type: 3}
-    spawnRate: 0.07
+    spawnRate: -0.025
+    spawnRateIncrease: 0.025
   - prefab: {fileID: 255340307441618166, guid: bb4c4c23852eb92488f93fdef088b464, type: 3}
     spawnRate: 0.3
+    spawnRateIncrease: 0
 --- !u!4 &2026393918
 Transform:
   m_ObjectHideFlags: 0

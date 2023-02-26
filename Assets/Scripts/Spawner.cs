@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
     //A script that spawns falling objects (folders, viruses etc)
 
     public Controller controller;
+    public Transform container;
 
     //Each class to contain each type of object and how often it spawns
     [System.Serializable]
@@ -14,6 +15,7 @@ public class Spawner : MonoBehaviour
     {
         public GameObject prefab;
         public float spawnRate;
+        public float spawnRateIncrease;
 
     }
 
@@ -28,8 +30,7 @@ public class Spawner : MonoBehaviour
         {
             if (Random.value < type.spawnRate * Time.deltaTime)
             {
-                Spawn(type.prefab);
-                
+                Spawn(type.prefab);               
             }
         }
     }
@@ -39,8 +40,16 @@ public class Spawner : MonoBehaviour
         Vector2 spawnPosition;
         spawnPosition.y = 50;
         spawnPosition.x = Random.Range(-13, 13);
-        GameObject newObject = Instantiate(prefab,spawnPosition,Quaternion.identity);
+        GameObject newObject = Instantiate(prefab,spawnPosition,Quaternion.identity, container);
         newObject.GetComponent<FallingObject>().controller = controller;
 
+    }
+
+    public void LevelUp()
+    {
+        foreach (Types type in fallingObjects)
+        {
+            type.spawnRate += type.spawnRateIncrease;
+        }
     }
 }
