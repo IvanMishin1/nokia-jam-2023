@@ -12,8 +12,8 @@ public class Catcher : MonoBehaviour
     {
         float movement = speed * Time.deltaTime;
 
-        if (Input.GetKey("a")) transform.Translate(-movement, 0f, 0f);
+        if (Input.GetKey("a") && transform.position.x > -24) transform.Translate(-movement, 0f, 0f);
 
-        if (Input.GetKey("d")) transform.Translate(movement, 0f, 0f);
+        if (Input.GetKey("d") && transform.position.x < 24) transform.Translate(movement, 0f, 0f);
     }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3460623877523781831}
   - component: {fileID: 3460623877523781824}
-  - component: {fileID: 3460623877523781829}
   - component: {fileID: 3460623877523781828}
+  - component: {fileID: 6689212183352274826}
   m_Layer: 0
   m_Name: Folder
   m_TagString: Untagged
@@ -84,21 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &3460623877523781829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3460623877523781825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6839b2abb69a0e34282254cc0e249e34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSpeed: 8
-  maxSpeed: 14
-  positionChange: 0
 --- !u!61 &3460623877523781828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +110,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9, y: 7}
   m_EdgeRadius: 0
+--- !u!114 &6689212183352274826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460623877523781825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e90e0d3ec333c47a1c5a5addef763e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  minSpeed: 6
+  maxSpeed: 12
+  positionChange: 0
+  progressAmount: 1
+  alertAmount: 1

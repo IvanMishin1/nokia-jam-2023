@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FallingObject : MonoBehaviour
 {
+    public Controller controller;
     public float minSpeed;
     public float maxSpeed;
     float speed;
@@ -29,7 +30,23 @@ public class FallingObject : MonoBehaviour
     {
         if (other.gameObject.tag == "Catcher")
         {
+            Caught();
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Bottom")
+        {
+            Missed();
+            Destroy(gameObject);
+        }
+    }
+
+
+
+    public virtual void Caught() {}    //This function is called when the object hits the catcher.
+
+    public virtual void Missed() {} //This function is called when the object exits the screen without being caught.
 }
